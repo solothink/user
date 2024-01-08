@@ -1,851 +1,638 @@
 <textarea name="text" cols="25" rows="5">
-    prgm1
+    Lab-01;
+def aStarAlgo(start_node, stop_node):
+    
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        tools:context=".MainActivity">
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="371dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="219dp"
-            android:text="Address:ASKB Campus, Anandnagar, | Bangalore - 560 024"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="87dp"
-            android:layout_marginLeft="87dp"
-            android:layout_marginEnd="73dp"
-            android:layout_marginRight="73dp"
-            android:layout_marginBottom="157dp"
-            android:text="Ph No: 9108380566"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="367dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginRight="19dp"
-            android:layout_marginBottom="64dp"
-            android:text="Email Id: uzma.sulthana@atria.edu"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="367dp"
-            android:layout_height="66dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="287dp"
-            android:text="Assistant Professor-ISE"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-    
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="180dp"
-            android:layout_height="98dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="495dp"
-            app:srcCompat="@drawable/aitlogo"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="4dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="487dp"
-            android:background="#4444" />
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="95dp"
-            android:layout_marginLeft="95dp"
-            android:layout_marginEnd="140dp"
-            android:layout_marginRight="140dp"
-            android:layout_marginBottom="401dp"
-            android:text="Uzma Sulthana"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="99dp"
-            android:layout_marginRight="99dp"
-            android:layout_marginBottom="495dp"
-            android:layout_toStartOf="@+id/imageView3"
-            android:layout_toLeftOf="@+id/imageView3"
-            android:text="AIT"
-            android:textColor="#E91E63"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-    
-    java c0de
-    
-    package com.example.program01;
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.os.Bundle;
-    public class MainActivity extends AppCompatActivity {
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-        }
+    open_set = set(start_node) 
+    closed_set = set()
+    g = {} 
+    parents = {}
+    g[start_node] = 0
+    parents[start_node] = start_node  
+
+    while len(open_set) > 0 :
+        n = None
+
+        for v in open_set:  
+            if n == None or g[v] + heuristic(v) < g[n] + heuristic(n):
+                n = v  
+
+        if n == stop_node or Graph_nodes[n] == None:
+            pass
+        else:
+            for (m, weight) in get_neighbors(n):
+             
+                if m not in open_set and m not in closed_set:
+                    open_set.add(m)       
+                    parents[m] = n        
+                    g[m] = g[n] + weight  
+
+
+             
+                else:
+                    if g[m] > g[n] + weight:
+                     
+                        g[m] = g[n] + weight
+                     
+                        parents[m] = n
+
+                     
+                        if m in closed_set:
+                            closed_set.remove(m)
+                            open_set.add(m)
+
+        if n == None:
+            print('Path does not exist!')
+            return None
+
+        # if the current node is the stop_node
+        # then we begin reconstructin the path from it to the start_node
+        if n == stop_node:
+            path = []
+
+            while parents[n] != n:
+                path.append(n)
+                n = parents[n]
+
+            path.append(start_node)
+
+            path.reverse()
+
+            print('Path found: {}'.format(path))
+            return path
+
+
+         
+        open_set.remove(n)# {'F','B'} len=2
+        closed_set.add(n) #{A} len=1
+
+    print('Path does not exist!')
+    return None
+
+ 
+def get_neighbors(v):
+    if v in Graph_nodes:
+        return Graph_nodes[v]
+    else:
+        return None
+ 
+def heuristic(n):
+    H_dist = {
+        'A': 10,
+        'B': 8,
+        'C': 5,
+        'D': 7,
+        'E': 3,
+        'F': 6,
+        'G': 5,
+        'H': 3,
+        'I': 1,
+        'J': 0
     }
+
+    return H_dist[n]
+
+#Describe your graph here
+Graph_nodes = {
+    
+    'A': [('B', 6), ('F', 3)],
+    'B': [('C', 3), ('D', 2)],
+    'C': [('D', 1), ('E', 5)],
+    'D': [('C', 1), ('E', 8)],
+    'E': [('I', 5), ('J', 5)],
+    'F': [('G', 1),('H', 7)] ,
+    'G': [('I', 3)],
+    'H': [('I', 2)],
+    'I': [('E', 5), ('J', 3)],
+
+}
+aStarAlgo('A', 'J')
+
+
+
+Lab-02;
+class Graph:
+    def __init__(self, graph, heuristicNodeList, startNode): #instantiate graph object with graph topology, heuristic values, start node
+
+        self.graph = graph
+        self.H=heuristicNodeList
+        self.start=startNode
+        self.parent={}
+        self.status={}
+        self.solutionGraph={}
+
+    def applyAOStar(self):  
+        self.aoStar(self.start, False)
+
+    def getNeighbors(self, v):  
+        return self.graph.get(v,'')
+
+    def getStatus(self,v):  
+        return self.status.get(v,0)
+
+    def setStatus(self,v, val):  
+        self.status[v]=val
+
+    def getHeuristicNodeValue(self, n):
+        return self.H.get(n,0)  
+
+    def setHeuristicNodeValue(self, n, value):
+        self.H[n]=value  
+
+
+    def printSolution(self):
+        print("FOR GRAPH SOLUTION, TRAVERSE THE GRAPH FROM THE STARTNODE:",self.start)
+        print("------------------------------------------------------------")
+        print(self.solutionGraph)
+        print("------------------------------------------------------------")
+
+    def computeMinimumCostChildNodes(self, v):  
+        minimumCost=0
+        costToChildNodeListDict={}
+        costToChildNodeListDict[minimumCost]=[]
+        flag=True
+        for nodeInfoTupleList in self.getNeighbors(v):  
+            cost=0
+            nodeList=[]
+            for c, weight in nodeInfoTupleList:
+                cost=cost+self.getHeuristicNodeValue(c)+weight
+                nodeList.append(c)
+        
+            if flag==True:  
+                minimumCost=cost
+                costToChildNodeListDict[minimumCost]=nodeList  
+                flag=False
+            else:  
+                if minimumCost>cost:
+                    minimumCost=cost
+                    costToChildNodeListDict[minimumCost]=nodeList  
+
+
+        return minimumCost, costToChildNodeListDict[minimumCost]  
+
+
+    def aoStar(self, v, backTracking):  
+
+        print("HEURISTIC VALUES :", self.H)
+        print("SOLUTION GRAPH :", self.solutionGraph)
+        print("PROCESSING NODE :", v)
+
+        print("-----------------------------------------------------------------------------------------")
+    
+        if self.getStatus(v) >= 0:  
+            minimumCost, childNodeList = self.computeMinimumCostChildNodes(v)
+            self.setHeuristicNodeValue(v, minimumCost)
+            self.setStatus(v,len(childNodeList))
+
+            solved=True  
+        
+            for childNode in childNodeList:
+                self.parent[childNode]=v
+                if self.getStatus(childNode)!=-1:
+                    solved=solved & False
+
+            if solved==True:  
+                self.setStatus(v,-1)
+                self.solutionGraph[v]=childNodeList  
+
+
+            if v!=self.start:  
+                self.aoStar(self.parent[v], True)  
+
+            if backTracking==False:  
+                for childNode in childNodeList:  
+                    self.setStatus(childNode,0)  
+                    self.aoStar(childNode, False)  
+
+
+
+h1 = {'A': 1, 'B': 6, 'C': 2, 'D': 12, 'E': 2, 'F': 1, 'G': 5, 'H': 7, 'I': 7, 'J':1, 'T': 3}
+graph1 = {
+    'A': [[('B', 1), ('C', 1)], [('D', 1)]],
+    'B': [[('G', 1)], [('H', 1)]],
+    'C': [[('J', 1)]],
+    'D': [[('E', 1), ('F', 1)]],
+    'G': [[('I', 1)]]
+}
+G1= Graph(graph1, h1, 'A')
+G1.applyAOStar()
+G1.printSolution()
+
+h2 = {'A': 1, 'B': 6, 'C': 12, 'D': 10, 'E': 4, 'F': 4, 'G': 5, 'H': 7}  
+graph2 = { # Graph of Nodes and Edges
+    'A': [[('B', 1), ('C', 1)], [('D', 1)]],  
+    'B': [[('G', 1)], [('H', 1)]],  
+    'D': [[('E', 1), ('F', 1)]]  
+}
+
+G2 = Graph(graph2, h2, 'A')  
+G2.applyAOStar()  
+G2.printSolution()  
+
+
+
+Lab-03;
+import csv
+
+with open("trainingexamples.csv") as f:
+    csv_file = csv.reader(f)
+    data = list(csv_file)
+
+    specific = data[1][:-1]
+    general = [['?' for i in range(len(specific))] for j in range(len(specific))]
+
+    for i in data:
+        if i[-1] == "Yes":
+            for j in range(len(specific)):
+                if i[j] != specific[j]:
+                    specific[j] = "?"
+                    general[j][j] = "?"
+
+        elif i[-1] == "No":
+            for j in range(len(specific)):
+                if i[j] != specific[j]:
+                    general[j][j] = specific[j]
+                else:
+                    general[j][j] = "?"
+
+        print("\nStep " + str(data.index(i)+1) + " of Candidate Elimination Algorithm")
+        print(specific)
+        print(general)
+
+    gh = []  
+    for i in general:
+        for j in i:
+            if j != '?':
+                gh.append(i)
+                break
+    print("\nFinal Specific hypothesis:\n", specific)
+    print("\nFinal General hypothesis:\n", gh)
+
+Lab-04;
+import pandas as pd
+import math
+
+ 
+ 
+def base_entropy(dataset):
+    p = 0
+    n = 0
+    target = dataset.iloc[:, -1]
+    targets = list(set(target))
+    for i in target:
+        if i == targets[0]:
+            p = p + 1
+        else:
+            n = n + 1
+    if p == 0 or n == 0:
+        return 0
+    elif p == n:
+        return 1
+    else:
+        entropy = 0 - (
+            ((p / (p + n)) * (math.log2(p / (p + n))) + (n / (p + n)) * (math.log2(n/ (p + n)))))
+        return entropy
+
+ 
+
+ 
+ 
+def entropy(dataset, feature, attribute):
+    p = 0
+    n = 0
+    target = dataset.iloc[:, -1]
+    targets = list(set(target))
+    for i, j in zip(feature, target):
+        if i == attribute and j == targets[0]:
+            p = p + 1
+        elif i == attribute and j == targets[1]:
+            n = n + 1
+        if p == 0 or n == 0:
+            return 0
+        elif p == n:
+            return 1
+        else:
+            entropy = 0 - (
+                ((p / (p + n)) * (math.log2(p / (p + n))) + (n / (p + n)) * (math.log2(n/ (p + n)))))
+            return entropy
+
+
+ 
+
+
+ 
+ 
+def counter(target, attribute, i):
+    p = 0
+    n = 0
+    targets = list(set(target))
+    for j, k in zip(target, attribute):
+        if j == targets[0] and k == i:
+            p = p + 1
+        elif j == targets[1] and k == i:
+            n = n + 1
+    return p, n
+
+ 
+ 
+ 
+def Information_Gain(dataset, feature):
+    Distinct = list(set(feature))
+    Info_Gain = 0
+    for i in Distinct:
+        Info_Gain = Info_Gain + feature.count(i) / len(feature) * entropy(dataset,feature, i)
+        Info_Gain = base_entropy(dataset) - Info_Gain
+    return Info_Gain
+
+
+ 
+
+
+ 
+ 
+def generate_childs(dataset, attribute_index):
+    distinct = list(dataset.iloc[:, attribute_index])
+    childs = dict()
+    for i in distinct:
+        childs[i] = counter(dataset.iloc[:, -1], dataset.iloc[:, attribute_index], i)
+    return childs
+
+ 
+
+ 
+ 
+def modify_data_set(dataset,index, feature, impurity):
+    size = len(dataset)
+    subdata = dataset[dataset[feature] == impurity]
+    del (subdata[subdata.columns[index]])
+    return subdata
+
+
+ 
+
+
+ 
+ 
+def greatest_information_gain(dataset):
+    max = -1
+    attribute_index = 0
+    size = len(dataset.columns) - 1
+    for i in range(0, size):
+        feature = list(dataset.iloc[:, i])
+        i_g = Information_Gain(dataset, feature)
+        if max < i_g:
+            max = i_g
+            attribute_index = i
+    return attribute_index
+
+
+ 
+
+
+ 
+ 
+def construct_tree(dataset, tree):
+    target = dataset.iloc[:, -1]
+    impure_childs = []
+    attribute_index = greatest_information_gain(dataset)
+    childs = generate_childs(dataset, attribute_index)
+    tree[dataset.columns[attribute_index]] = childs
+    targets = list(set(dataset.iloc[:, -1]))
+    for k, v in childs.items():
+        if v[0] == 0:
+            tree[k] = targets[1]
+        elif v[1] == 0:
+            tree[k] = targets[0]
+        elif v[0] != 0 or v[1] != 0:
+            impure_childs.append(k)
+    for i in impure_childs:
+        sub = modify_data_set(dataset,attribute_index,
+        dataset.columns[attribute_index], i)
+        tree = construct_tree(sub, tree)
+    return tree
+
+
+ 
+ 
+ 
+def main():
+    df = pd.read_csv("playtennis.csv")
+    tree = dict()
+    result = construct_tree(df, tree)
+    for key, value in result.items():
+        print(key, " => ", value)
+
+
+ 
+
+if __name__ == "__main__":
+    main()
+
+
+Lab-05;
+import numpy as np
+X = np.array(([2, 9], [1, 5], [3, 6]), dtype=float)
+y = np.array(([92], [86], [89]), dtype=float)
+X = X/np.amax(X,axis=0)  
+y = y/100
+
+ 
+def sigmoid (x):
+    return 1/(1 + np.exp(-x))
+
+ 
+def derivatives_sigmoid(x):
+    return x * (1 - x)
+
+ 
+epoch=5000                 
+lr=0.1                     
+inputlayer_neurons = 2     
+hiddenlayer_neurons = 3    
+output_neurons = 1         
+
+ 
+wh=np.random.uniform(size=(inputlayer_neurons,hiddenlayer_neurons))
+bh=np.random.uniform(size=(1,hiddenlayer_neurons))
+wout=np.random.uniform(size=(hiddenlayer_neurons,output_neurons))
+bout=np.random.uniform(size=(1,output_neurons))
+
+
+ 
+for i in range(epoch):
+    
+ 
+    hinp1=np.dot(X,wh)
+    hinp=hinp1 + bh
+    hlayer_act = sigmoid(hinp)
+    outinp1=np.dot(hlayer_act,wout)
+    outinp= outinp1+ bout
+    output = sigmoid(outinp)
+    
+ 
+    EO = y-output
+    outgrad = derivatives_sigmoid(output)
+    d_output = EO* outgrad
+    EH = d_output.dot(wout.T)
+
+ 
+    hiddengrad = derivatives_sigmoid(hlayer_act)
+    d_hiddenlayer = EH * hiddengrad
+    
+ 
+    wout += hlayer_act.T.dot(d_output) *lr
+    wh += X.T.dot(d_hiddenlayer) *lr
     
     
-    prgm2
-    
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-        <TextView
-            android:layout_width="209dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="108dp"
-            android:layout_marginRight="108dp"
-            android:layout_marginBottom="530dp"
-            android:text="Simple Calci"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="115dp"
-            android:layout_marginRight="115dp"
-            android:layout_marginBottom="364dp"
-            android:ems="10"
-            android:hint="Enter the Number 2"
-            android:inputType="textPersonName"
-            android:text=""
-            android:textColorHighlight="#FFFFFF" />
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="110dp"
-            android:layout_marginRight="110dp"
-            android:layout_marginBottom="439dp"
-            android:ems="10"
-            android:hint="Enter the Number 1"
-            android:inputType="textPersonName"
-            android:text=""
-            android:textColorHighlight="#FFFFFF" />
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="260dp"
-            android:layout_marginRight="260dp"
-            android:layout_marginBottom="175dp"
-            android:text="ADD"
-            android:textStyle="bold"
-            android:onClick="add"
-            app:backgroundTint="#E8F381" />
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="266dp"
-            android:layout_marginRight="266dp"
-            android:layout_marginBottom="61dp"
-            android:text="MUL"
-            android:onClick="mul"
-            app:backgroundTint="#A1FAA4" />
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="108dp"
-            android:layout_marginRight="108dp"
-            android:layout_marginBottom="63dp"
-            android:text="DIV"
-            android:onClick="div"
-            app:backgroundTint="#E6C28C" />
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="105dp"
-            android:layout_marginRight="105dp"
-            android:layout_marginBottom="182dp"
-            android:text="SUB"
-            android:onClick="sub"
-            app:backgroundTint="#ECA9A9" />
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="86dp"
-            android:layout_height="61dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="202dp"
-            android:layout_marginRight="202dp"
-            android:layout_marginBottom="274dp"
-            android:text="0"
-            android:textSize="36sp" />
-    </RelativeLayout>
-    
-    java code
-    
-    package com.example.program02;
-    
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.os.Bundle;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.EditText;
-    import android.widget.TextView;
-    
-    import com.example.program02.R;
-    
-    public class MainActivity extends AppCompatActivity {
-        EditText e1,e2;
-        TextView tv;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            e1 =(EditText)findViewById(R.id.editText1);
-            e2 = (EditText)findViewById(R.id.editText2);
-            tv= (TextView)findViewById(R.id.tv1);
-        }
-        public void add(View v){
-            int a1=Integer.parseInt(e1.getText().toString());
-            int a2= Integer.parseInt(e2.getText().toString());
-            int result=a1+a2;
-            tv.setText(""+result);
-        }
-        public void sub(View v){
-            int a1=Integer.parseInt(e1.getText().toString());
-            int a2= Integer.parseInt(e2.getText().toString());
-            int result=a1-a2;
-            tv.setText(""+result);
-        }
-        public void mul(View v){
-            int a1=Integer.parseInt(e1.getText().toString());
-            int a2= Integer.parseInt(e2.getText().toString());
-            int result=a1*a2;
-            tv.setText(""+result);
-        }
-        public void div(View v){
-            float a1=Integer.parseInt(e1.getText().toString());
-            float a2= Integer.parseInt(e2.getText().toString());
-            float result=a1/a2;
-            tv.setText(""+result);
-        }
-    }
-    
-    prgm04
-    
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="167dp"
-            android:layout_marginRight="167dp"
-            android:layout_marginBottom="409dp"
-            android:text="CLICK HERE" />
-    </RelativeLayout>
-    
-    java code
-    
-    package com.example.program04;
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.app.WallpaperManager;
-    import android.graphics.Bitmap;
-    import android.graphics.BitmapFactory;
-    import android.graphics.drawable.BitmapDrawable;
-    import android.graphics.drawable.Drawable;
-    import android.os.Bundle;
-    import android.os.Handler;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.Toast;
-    
-    import com.example.program04.R;
-    
-    import java.io.IOException;
-    import java.util.Timer;
-    import java.util.TimerTask;
-    public class MainActivity extends AppCompatActivity {
-        Button wallpaperChange;
-        Timer mytimer;
-        Drawable drawable;
-        WallpaperManager wpm;
-        int prev=1;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            mytimer=new Timer();
-            wpm = WallpaperManager.getInstance(this);
-            wallpaperChange=(Button)findViewById(R.id.button1);
-            wallpaperChange.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View view) {
-                    setwallpaper();
-                }
-            });
-        }
-        private void setwallpaper() {
-            Toast.makeText(this,"setting Wallpaper please wait.",Toast.LENGTH_LONG).show();
-            mytimer.schedule(new TimerTask() {
-                @Override
-                public void run()
-                {
-                    if(prev==1) {
-                        drawable = getResources().getDrawable(R.drawable.i1); prev = 2;
-                    }
-                    else if(prev==2) {
-                        drawable = getResources().getDrawable(R.drawable.i2); prev=3;
-                    }
-                    else if(prev==3) {
-                        drawable = getResources().getDrawable(R.drawable.i3); prev=4;
-                    }
-                    else if(prev==4) {
-                        drawable = getResources().getDrawable(R.drawable.i4); prev=5;
-                    }
-                    else if(prev==5) {
-                        drawable = getResources().getDrawable(R.drawable.i5); prev=1;
-                    }
-                    Bitmap wallpaper = ((BitmapDrawable)drawable).getBitmap(); try {
-                    wpm.setBitmap(wallpaper);
-                }
-                catch (IOException e)
-                { e.printStackTrace();
-                }
-                }
-            },0,30000);
-        }
-    }
-    
-    
-    prgm5
-    
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="332dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="41dp"
-            android:layout_marginLeft="41dp"
-            android:layout_marginEnd="38dp"
-            android:layout_marginRight="38dp"
-            android:layout_marginBottom="516dp"
-            android:text="Counter Application"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="236dp"
-            android:layout_marginRight="236dp"
-            android:layout_marginBottom="89dp"
-            android:text="Start"
-            android:textSize="30sp"
-            app:backgroundTint="#4CAF50" />
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="55dp"
-            android:layout_marginRight="55dp"
-            android:layout_marginBottom="92dp"
-            android:text="STOP"
-            android:textSize="30sp"
-            app:backgroundTint="#EC5449" />
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="165dp"
-            android:layout_marginRight="165dp"
-            android:layout_marginBottom="434dp"
-            android:text="counter value"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-    
-    java code
-    
-    package com.example.project05;
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.os.Bundle;
-    import android.os.Handler;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.TextView;
-    
-    import com.example.project05.R;
-    
-    public class MainActivity extends AppCompatActivity {
-        TextView txtCounter;
-        Button btn_start,btn_stop;
-        int count=0;
-        Handler customHandler=new Handler();
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            txtCounter= (TextView)findViewById(R.id.textView2);
-            btn_start =(Button)findViewById(R.id.button1);
-            btn_stop=(Button)findViewById(R.id.button2);
-            btn_start.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    customHandler.postDelayed(updateTimerThread,0);
-                }
-            });
-            btn_stop.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    customHandler.removeCallbacks(updateTimerThread);
-                }
-            });
-        }
-        private final Runnable updateTimerThread =new Runnable() {
-            @Override
-            public void run() {
-                txtCounter.setText(""+count);
-                customHandler.postDelayed(this,1000);
-                count++;
-            }
-        };
-    }
-    
-    
-    prgm07
-    
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="486dp"
-            android:text="Text2Speech"
-            android:textSize="30sp" />
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="142dp"
-            android:layout_marginBottom="377dp"
-            android:ems="10"
-            android:hint="Enter text here"
-            android:inputType="textPersonName" />
-        <Button
-            android:id="@+id/convert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="196dp"
-            android:layout_marginBottom="236dp"
-            android:onClick="convert"
-            android:background="#6CEC71"
-            android:text="CONVERT" />
-    </RelativeLayout>
-    
-    java code
-    
-    package com.example.program06;
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.os.Bundle;
-    import android.speech.tts.TextToSpeech;
-    import android.view.View;
-    import android.widget.EditText;
-    import java.util.Locale;
-    public class MainActivity extends AppCompatActivity {
-        EditText e1;
-        TextToSpeech t1;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            e1=findViewById(R.id.editText);
-            t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener()
-            {
-                @Override
-                public void onInit(int status) {
-                    if(status!=TextToSpeech.ERROR){
-                        t1.setLanguage(Locale.UK);
-                    }
-                }
-            });
-        }
-        public void convert(View V){
-            String tospeak=e1.getText().toString();
-            t1.speak(tospeak,TextToSpeech.QUEUE_FLUSH,null);
-        }
-    }
-    
-    
-    prgm08
-    
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/Button11"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="#4CAF50"
-        tools:context=".MainActivity">
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="169dp"
-            android:layout_marginBottom="201dp"
-            android:backgroundTint="#4CAF50"
-            android:onClick="inputNumber"
-            android:text="8" />
-        <Button
-            android:id="@+id/Button10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="286dp"
-            android:layout_marginBottom="115dp"
-            android:onClick="inputNumber"
-            android:backgroundTint="#4CAF50"
-            android:text="*" />
-        <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="38dp"
-            android:backgroundTint="#CDDC39"
-            android:text="Save" />
-        <Button
-            android:id="@+id/callBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="209dp"
-            android:layout_marginBottom="35dp"
-            android:backgroundTint="#F44336"
-            android:text="Call" />
-        <Button
-            android:id="@+id/clearBtn12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="159dp"
-            android:layout_marginBottom="116dp"
-            android:backgroundTint="#4CAF50"
-            android:onClick="inputNumber"
-            android:text="0" />
-        <Button
-            android:id="@+id/Button7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="288dp"
-            android:layout_marginBottom="201dp"
-            android:onClick="inputNumber"
-            android:backgroundTint="#4CAF50"
-            android:text="7" />
-        <Button
-            android:id="@+id/Button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="38dp"
-            android:layout_marginBottom="201dp"
-            android:onClick="inputNumber"
-            android:backgroundTint="#4CAF50"
-            android:text="9" />
-        <EditText
-            android:id="@+id/phoneNumberEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="172dp"
-            android:layout_marginBottom="543dp"
-            android:onClick="inputNumber"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="phone" />
-        <Button
-            android:id="@+id/clearBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="544dp"
-            android:backgroundTint="#E91E63"
-            android:text="Clear" />
-        <Button
-            android:id="@+id/Button12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="38dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="108dp"
-            android:backgroundTint="#4CAF50"
-            android:text="#" />
-        <Button
-            android:id="@+id/Button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="291dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="380dp"
-            android:backgroundTint="#4CAF50"
-            android:text="1" />
-        <Button
-            android:id="@+id/Button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="289dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="296dp"
-            android:backgroundTint="#4CAF50"
-            android:text="4" />
-        <Button
-            android:id="@+id/Button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="170dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="295dp"
-            android:backgroundTint="#4CAF50"
-            android:text="5" />
-        <Button
-            android:id="@+id/Button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="290dp"
-            android:onClick="inputNumber"
-            android:backgroundTint="#4CAF50"
-            android:text="6" />
-        <Button
-            android:id="@+id/Button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="172dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="380dp"
-            android:backgroundTint="#4CAF50"
-            android:text="2" />
-        <Button
-            android:id="@+id/Button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="48dp"
-            android:onClick="inputNumber"
-            android:layout_marginBottom="380dp"
-            android:backgroundTint="#4CAF50"
-            android:text="3" />
-    </RelativeLayout>
-    
-    
-    java code
-    
-    package com.example.program07;
-    import androidx.appcompat.app.AppCompatActivity;
-    import android.content.Intent;
-    import android.net.Uri;
-    import android.os.Bundle;
-    import android.provider.ContactsContract;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.EditText;
-    import java.net.URI;
-    public class MainActivity extends AppCompatActivity {
-        EditText phoneNumberEditText;
-        Button clearBtn,saveBtn,callBtn;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            phoneNumberEditText=findViewById(R.id.phoneNumberEditText);
-            clearBtn=findViewById(R.id.clearBtn);
-            callBtn=findViewById(R.id.callBtn);
-            saveBtn=findViewById(R.id.saveBtn);
-            clearBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    phoneNumberEditText.setText("");
-                }
-            });
-            callBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String phoneNumber=phoneNumberEditText.getText().toString();
-                    Intent intent= new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+phoneNumber));
-                    startActivity(intent);
-                }
-            });
-            saveBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String phoneNumber=phoneNumberEditText.getText().toString();
-                    Intent intent=new Intent(Intent.ACTION_INSERT);
-                    intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
-                    intent.putExtra(ContactsContract.Intents.Insert.PHONE,phoneNumber);
-                    startActivity(intent);
-                }
-            });
-        }
-        public void inputNumber(View v){
-            Button btn=(Button)v;
-            String digit=btn.getText().toString();
-            String phoneNumber=phoneNumberEditText.getText().toString();
-            phoneNumberEditText.setText(phoneNumber+digit);
-        }
-    }
-    
-    
+print("Input: \n" + str(X))
+print("Actual Output: \n" + str(y))
+print("Predicted Output: \n" ,output)
+
+Lab-06;
+ 
+import pandas as pd
+from sklearn import tree
+from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB
+
+ 
+data = pd.read_csv('tennisdata.csv')
+print("The first 5 Values of data is :\n", data.head())$
+ 
+X = data.iloc[:, :-1]
+print("\nThe First 5 values of the train data is\n", X.head())$
+y = data.iloc[:, -1]
+print("\nThe First 5 values of train output is\n", y.head())$
+ 
+le_outlook = LabelEncoder()
+X.Outlook = le_outlook.fit_transform(X.Outlook)
+
+le_Temperature = LabelEncoder()
+X.Temperature = le_Temperature.fit_transform(X.Temperature)
+
+le_Humidity = LabelEncoder()
+X.Humidity = le_Humidity.fit_transform(X.Humidity)
+
+le_Windy = LabelEncoder()
+X.Windy = le_Windy.fit_transform(X.Windy)
+
+print("\nNow the Train output is\n", X.head())$
+le_PlayTennis = LabelEncoder()
+y = le_PlayTennis.fit_transform(y)
+print("\nNow the Train output is\n",y)$
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.20)
+
+classifier = GaussianNB()
+classifier.fit(X_train, y_train)
+
+from sklearn.metrics import accuracy_score
+print("Accuracy is:", accuracy_score(classifier.predict(X_test), y_test))$
+
+
+Lab-07;
+import matplotlib.pyplot as plt 
+from sklearn import datasets 
+from sklearn.cluster import KMeans 
+import pandas as pd
+import numpy as np
+
+ 
+iris = datasets.load_iris()
+X = pd.DataFrame(iris.data)
+X.columns = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width'] 
+y = pd.DataFrame(iris.target)
+y.columns = ['Targets']
+
+ 
+model = KMeans(n_clusters=3)
+model.fit(X) # model.labels_ : Gives cluster no for which samples belongs to
+
+ 
+plt.figure(figsize=(14,7))
+colormap = np.array(['red', 'lime', 'black'])
+
+ 
+plt.subplot(1, 3, 1)
+plt.scatter(X.Petal_Length, X.Petal_Width, c=colormap[y.Targets], s=40) 
+plt.title('Real Clusters')
+plt.xlabel('Petal Length') 
+plt.ylabel('Petal Width')
+
+ 
+plt.subplot(1, 3, 2)
+plt.scatter(X.Petal_Length, X.Petal_Width, c=colormap[model.labels_], s=40) 
+plt.title('K-Means Clustering')
+plt.xlabel('Petal Length') 
+plt.ylabel('Petal Width')
+
+ 
+from sklearn import preprocessing
+
+ 
+scaler = preprocessing.StandardScaler() 
+scaler.fit(X)
+xsa = scaler.transform(X)
+xs = pd.DataFrame(xsa, columns = X.columns)
+from sklearn.mixture import GaussianMixture 
+gmm = GaussianMixture(n_components=40) 
+gmm.fit(xs)
+plt.subplot(1, 3, 3)
+plt.scatter(X.Petal_Length, X.Petal_Width, c=colormap[0], s=40) 
+plt.title('GMM Clustering')
+plt.xlabel('Petal Length') 
+plt.ylabel('Petal Width')
+
+print('Observation: The GMM using EM algorithm based clustering matched the true labels more closely than the Kmeans.')
+
+
+Lab-08;
+from sklearn.model_selection import train_test_split 
+from sklearn.neighbors import KNeighborsClassifier 
+from sklearn import datasets
+iris=datasets.load_iris() 
+print("Iris Data set loaded...")
+x_train, x_test, y_train, y_test = train_test_split(iris.data,iris.target,test_size=0.1)
+#random_state=0
+for i in range(len(iris.target_names)):
+    print("Label", i , "-",str(iris.target_names[i]))
+classifier = KNeighborsClassifier(n_neighbors=2)
+classifier.fit(x_train, y_train)
+y_pred=classifier.predict(x_test)
+print("Results of Classification using K-nn with K=1 ") 
+for r in range(0,len(x_test)):
+    print(" Sample:", str(x_test[r]), " Actual-label:", str(y_test[r])," Predicted-label:", str(y_pred[r]))
+
+    print("Classification Accuracy :" , classifier.score(x_test,y_test));
+
+
+
+Lab-09;
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def local_regression(x0, X, Y, tau):
+    x0 = [1, x0]   
+    X = [[1, i] for i in X]
+    X = np.asarray(X)
+    xw = (X.T) * np.exp(np.sum((X - x0) ** 2, axis=1) / (-2 * tau))
+    beta = np.linalg.pinv(xw @ X) @ xw @ Y @ x0  
+    return beta    
+
+def draw(tau):
+    prediction = [local_regression(x0, X, Y, tau) for x0 in domain]
+    plt.plot(X, Y, 'o', color='black')
+    plt.plot(domain, prediction, color='red')
+    plt.show()
+
+X = np.linspace(-3, 3, num=1000)
+domain = X
+Y = np.log(np.abs(X ** 2 - 1) + .5)
+
+draw(10)
+draw(0.1)
+draw(0.01)
+draw(0.001)
+
     </textarea>
